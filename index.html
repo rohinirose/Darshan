@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#05060d">
+<title>For Darshan ✦</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+  :root{--bg:#050505;--white:#ffffff;--muted:#b8b8b8;--lav:#ffffff;--line:rgba(255,255,255,.22);--glass:rgba(14,14,14,.82)}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+  body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(ellipse at 50% 0%,#242424 0%,transparent 50%),radial-gradient(ellipse at 90% 75%,#171717 0%,transparent 38%),#050505}
+  #stars{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+  .star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.45;animation:twinkle 3s infinite ease-in-out}
+  @keyframes twinkle{0%,100%{opacity:.18;transform:scale(.8)}50%{opacity:.9;transform:scale(1.35)}}
+  .moon{position:fixed;top:7%;right:9%;width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 35% 32%,#fff 0%,#dedede 38%,#aaa 70%,#737373 100%);box-shadow:0 0 35px #ffffff40,0 0 100px #ffffff18;opacity:.85;z-index:-1}
+  .moon:after{content:"";position:absolute;inset:-2px;border-radius:50%;background:#111126;transform:translate(17px,-7px)}
+  .screen{display:none;min-height:100svh;padding:32px 20px;align-items:center;justify-content:center;position:relative}
+  .screen.active{display:flex;animation:fadeIn .8s ease both}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--lav);font-weight:600}
+  .serif{font-family:'Cormorant Garamond',serif;font-weight:500}
+  .intro{width:min(760px,100%);text-align:center;padding:clamp(24px,6vw,60px) 0}
+  .tiny-star{font-size:1.3rem;color:var(--lav);margin-bottom:22px;display:block;animation:float 4s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-7px)}}
+  h1{font-size:clamp(3rem,9vw,6.7rem);line-height:.9;letter-spacing:-.045em;margin:20px 0 24px}
+  h1 em{font-style:italic;color:var(--lav)}
+  .sub{color:var(--muted);font-size:clamp(.92rem,2vw,1.05rem);line-height:1.9;max-width:480px;margin:0 auto}
+  .welcome-cover{width:min(300px,82vw);height:clamp(145px,24vw,210px);margin:24px auto 10px;border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative;background:#080811;box-shadow:0 12px 42px #0008}
+  .welcome-cover img{width:100%;height:100%;object-fit:contain;display:block}
+  .welcome-cover span{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 10px;background:linear-gradient(0deg,#05060de8,transparent);font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#f5f2ff}
+  .question{font-size:clamp(2rem,6vw,3.6rem);line-height:1.05;margin:30px 0 14px}
+  .question-note{color:var(--muted);font-size:.9rem}
+  .buttons{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:30px;min-height:58px;position:relative}
+  button{font:inherit;cursor:pointer;border:0;transition:transform .2s,background .2s,box-shadow .2s}
+  .btn{padding:15px 29px;border-radius:999px;font-size:.92rem;font-weight:600;letter-spacing:.02em}
+  .yes{background:linear-gradient(135deg,#ffffff,#cfcfcf);color:#111;box-shadow:0 8px 35px #ffffff2b}
+  .yes:hover{transform:translateY(-3px);box-shadow:0 12px 42px #ffffff55}
+  .no{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#d7d3e8;position:relative}
+  .hint{margin-top:26px;color:#77748e;font-size:.75rem;letter-spacing:.05em}
+  .topline{position:absolute;top:25px;left:0;right:0;text-align:center;color:#77748e;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase}
+  .count-wrap{width:min(900px,100%);text-align:center}
+  .count-wrap h2{font-size:clamp(3rem,8vw,6rem);line-height:.9;margin:22px 0}
+  .count-wrap h2 em{color:var(--lav)}
+  .count-desc{max-width:500px;margin:0 auto;color:var(--muted);line-height:1.8}
+  .countdown{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:42px auto 30px;max-width:720px}
+  .time-card{padding:20px 8px;border:1px solid var(--line);background:linear-gradient(150deg,rgba(255,255,255,.07),rgba(255,255,255,.015));border-radius:18px;backdrop-filter:blur(8px)}
+  .time-num{font-size:clamp(1.8rem,5vw,3.1rem);font-weight:300;letter-spacing:-.05em;display:block;font-variant-numeric:tabular-nums}
+  .time-label{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-top:7px}
+  .date-line{color:var(--lav);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase}
+  .note-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;color:#e2e2e2;margin:24px 0}
+  .surprise{width:min(1000px,100%);padding:36px 0 25px;text-align:center}
+  .surprise h2{font-size:clamp(3.3rem,9vw,7rem);line-height:.86;margin:20px 0 24px}
+  .surprise h2 em{color:var(--lav)}
+  .cover{width:min(560px,100%);height:clamp(210px,46vw,370px);margin:32px auto 24px;border-radius:24px;overflow:hidden;position:relative;border:1px solid var(--line);background:linear-gradient(135deg,#222,#080808);box-shadow:0 20px 80px #0008}
+  .cover img{width:100%;height:100%;object-fit:contain;display:block;opacity:1;background:#080811}
+  .cover:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,6,13,.35),transparent 35%);pointer-events:none}
+  .cover-caption{position:absolute;bottom:20px;left:22px;z-index:1;text-align:left;font-family:'Cormorant Garamond',serif;font-size:1.6rem}
+  .letter{max-width:650px;margin:0 auto 38px;text-align:left;color:#d2cfe1;line-height:1.95;font-size:1rem;border-left:1px solid #ffffff77;padding:4px 0 4px 22px}
+  .letter strong{color:#fff;font-weight:500}
+  .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:28px 0 40px;text-align:left}
+  .photo{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,#222,#0d0d0d);cursor:pointer}
+  .photo:nth-child(2),.photo:nth-child(3){aspect-ratio:4/3}
+  .photo img{width:100%;height:100%;object-fit:contain;display:block;transition:filter .5s;filter:saturate(.95);background:#080811}
+  .photo:hover img{filter:saturate(1.08)}
+  .photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#05060d9c,transparent 28%);pointer-events:none}
+  .photo-label{position:absolute;bottom:15px;left:16px;z-index:1;font-family:'Cormorant Garamond',serif;font-size:1.35rem}
+  .photo small{display:block;font: .7rem 'DM Sans',sans-serif;color:#c4bfd8;margin-top:3px}
+  .footer{color:#77748e;font-size:.72rem;letter-spacing:.12em;margin:35px 0 10px}
+  .restart{margin-top:8px;background:transparent;color:#a9a3bf;text-decoration:underline;text-underline-offset:5px;font-size:.8rem}
+  .hidden{display:none!important}
+  .reveal{animation:reveal .9s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes reveal{from{opacity:0;transform:translateY(22px) scale(.98);filter:blur(5px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+  .modal{position:fixed;inset:0;z-index:10;background:#020209ed;display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex}
+  .modal img{max-width:min(900px,100%);max-height:82vh;object-fit:contain;border-radius:12px;box-shadow:0 20px 90px #000}
+  .modal-close{position:absolute;top:22px;right:24px;background:#ffffff18;color:white;border:1px solid #ffffff44;border-radius:50%;width:44px;height:44px;font-size:1.4rem}
+  @media(max-width:560px){.moon{width:55px;height:55px;top:5%;right:7%;opacity:.6}.countdown{grid-template-columns:repeat(3,minmax(0,1fr));max-width:350px}.time-card{padding:15px 5px}.time-card:last-child{grid-column:2}.gallery{gap:9px}.photo-label{left:11px;bottom:11px;font-size:1.15rem}.photo-label small{font-size:.62rem}.letter{font-size:.94rem}.topline{font-size:.58rem}}
+  @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div><div class="moon" aria-hidden="true"></div>
+
+<main>
+<section class="screen active" id="welcome">
+  <div class="topline">A little universe, made for you</div>
+  <div class="intro">
+    <span class="tiny-star">✦</span>
+    <div class="eyebrow">For someone who matters</div>
+    <h1 class="serif">Hey, <em>Darshan.</em></h1>
+    <p class="sub">Some people quietly become a favourite part of your life.<br>This little corner of the internet is for one of them.</p>
+    <div class="welcome-cover">
+      <img src="images/darshan-cover.jpg" alt="Darshan's cover photo">
+      <span>A favourite face in my little universe ✦</span>
+    </div>
+    <div class="question serif">R u happy<br><em>with me?</em></div>
+    <p class="question-note">Be honest… but choose wisely. ♡</p>
+    <div class="buttons" id="buttonArea">
+      <button class="btn yes" id="yesBtn">YES, OF COURSE ✦</button>
+      <button class="btn no" id="noBtn">NO 🙃</button>
+    </div>
+    <div class="hint">P.S. The NO button has other plans.</div>
+  </div>
+</section>
+
+<section class="screen" id="countScreen">
+  <div class="count-wrap reveal">
+    <div class="eyebrow">I knew you'd say yes</div>
+    <h2 class="serif">Then let's count down<br>to <em>your day.</em></h2>
+    <p class="count-desc">Until your birthday, here's a tiny reminder: I'm genuinely glad our paths crossed. Now wait for your little surprise.</p>
+    <div class="countdown" aria-label="Countdown to Darshan's birthday">
+      <div class="time-card"><span class="time-num" id="months">00</span><span class="time-label">Months</span></div>
+      <div class="time-card"><span class="time-num" id="days">00</span><span class="time-label">Days</span></div>
+      <div class="time-card"><span class="time-num" id="hours">00</span><span class="time-label">Hours</span></div>
+      <div class="time-card"><span class="time-num" id="minutes">00</span><span class="time-label">Minutes</span></div>
+      <div class="time-card"><span class="time-num" id="seconds">00</span><span class="time-label">Seconds</span></div>
+    </div>
+    <div class="date-line">24 November 2026 · Save the date ✦</div>
+    <p class="note-line">“Some friendships make ordinary days feel a little brighter.”</p>
+    <button class="btn yes hidden" id="openSurprise">Your surprise is ready — open it ✨</button>
+    <p class="hint" id="waitHint">The surprise unlocks when the countdown reaches zero.</p>
+  </div>
+</section>
+
+<section class="screen" id="birthdayScreen">
+  <div class="surprise reveal">
+    <div class="eyebrow">The day is finally here</div>
+    <h2 class="serif">Happy Birthday,<br><em>Darshan.</em></h2>
+    <p class="sub">Today deserves more than an ordinary “happy birthday”. So I made you a little something.</p>
+    <div class="cover">
+      <img src="images/darshan-cover.jpg" alt="A favourite photo of Darshan" onerror="this.style.display='none'">
+      <div class="cover-caption">A little memory, just for you ✦</div>
+    </div>
+    <div class="letter">
+      <p>Darshan</p>
+      <p>Happy birthday to you🫂.......Edu un birthday aprm tha open aagum nee etha onu un birthday anaiku padipa or enmela irukura kovathula aprma kuda padikalam so delated wishes also............unaku un birthday maybe special uh illama irukalam but enaku un birthday anaiku una special uh feel pana vaikanum nu aasa unaku yaruna edu mathuri pani irukagala nu thrl but na panura 1st person nee tha........unaku cake cut pananum nu enaku romba yr asaa i tried also 1st time un 12th standard birthday apo evening full ona iruthom niyabagam iruka apo kasu yadutu vaicha but yaduthutu vara marenta then 1st yr la i called u nee varala 2nd yr i tried alot but it was unsuccessfull plan then epo current 3rd yr i asked u many times to come out literally i begged u nee varala nu solita maybe na tha unlucky person pola atha na nenaikurathu edumey nadaka matiguthu.................</p>
+      <p>Eduku mela solurathu nee yapadi yaduthupa nu thrl but full uh padi enaku theriji u know this adunala kuda nee pora pora nu soli irukalam...........many times i like u , i miss you nu soli iruken aduku elam meaning "I LOVE U" pa..... na una love pana kudathu tha irutha but i can't.Unkitta pesum bothu i feel very happy unkuda aa irukanum pola aa irukum edutha reason pola.....Aana nee yapo na torture panurana distrub panurana nu keta apo "ama ena pana pora" nu ketiyoo apathula iruthu aa unkitta pesura apolam na pesurathu aanalatha nee pesura pola nu feel aagum recent uh illa darshan una enaku 12th end la iruthu aa pudikum adunalatha nee again vanthu pesuna aprm unkuda pesama iruka mudiyala literally i am addicted to u adutha enaku bayama iruku nee poita aprm ena aagum nu.....maybe epolam first mathuri pesama irukalam, pesunathu vida neraiya sanda potu irukalam but i never hate u.........</p>
+      <p>Ena nu thrl my life la ena nadanthalum unkitta matum tha solanum nu thoonum both happiness and sad adu chinna age la iruthu apadi aa palagiduchii......Na unkuda oona irutha tha nenaichi oru naal kuda panama iruthu irukalam nu nenaichathey illaaa but unaku ena patha yapadi iruku nu thrl 12th apovey nee virigin illa thana nu keta and epo threesome kk va nu keta na onum item illa kk va......Unkuda panurana kamikurana unkitta matum thaaa.........</p>
+      <p>i am alwys thinking about u like ena panura , saptana , nee clg vittu v2ku pora time vantha podum poi irupana matana nu tha and nee poitiya nee konjam easy uh kandu pidikalam yapadi na ur frd dheeran steps and house entrance munadi vantha aprm tha light poduvaga so light irutha nee v2ku poita illana nee pola nu pathutu irupa enaku therithu konjam lusu aagiten nu but stop pana mudiyala....na kekurathu crt illa nu theriyum but if there is any chance for me enkitta open uh vanthu solidu sorry na pana elathukum and edu varikum enkuda iruthathuku romba thanks ...... nee neraiya vaati pora pora nu sona apo na tha vidala na sonatha ketu iruthathuku nandri.........</p>
+      <p>unaku enkitta pesanum nu thoonichina anytime enaku what's app la msg panu unaku yarum illa nu thoonuchina don't worry about that i will alwys be there for u........</p>
+    </div>
+    <div class="eyebrow">Little pieces of our story</div>
+    <div class="gallery">
+      <div class="photo" data-full="images/darshan-1.jpg"><img src="images/darshan-1.jpg" alt="Memory one" onerror="this.style.display='none'"><div class="photo-label">Memory no. 01<small>One for the collection</small></div></div>
+      <div class="photo" data-full="images/darshan-2.jpg"><img src="images/darshan-2.jpg" alt="Memory two" onerror="this.style.display='none'"><div class="photo-label">Memory no. 02<small>A moment worth keeping</small></div></div>
+      <div class="photo" data-full="images/darshan-3.jpg"><img src="images/darshan-3.jpg" alt="Memory three" onerror="this.style.display='none'"><div class="photo-label">Memory no. 03<small>For the future throwbacks</small></div></div>
+      <div class="photo" data-full="images/darshan-4.jpg"><img src="images/darshan-4.jpg" alt="Memory four" onerror="this.style.display='none'"><div class="photo-label">Memory no. 04<small>And many more to come</small></div></div>
+
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181328.png"><img src="images/Screenshot%202026-10-22%20181328.png" alt="Darshan photo 181328" loading="lazy"><div class="photo-label">Memory · 181328<small>A moment to keep</small></div></div>
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181422.png"><img src="images/Screenshot%202026-10-22%20181422.png" alt="Darshan photo 181422" loading="lazy"><div class="photo-label">Memory · 181422<small>A moment to keep</small></div></div>
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181458.png"><img src="images/Screenshot%202026-10-22%20181458.png" alt="Darshan photo 181458" loading="lazy"><div class="photo-label">Memory · 181458<small>A moment to keep</small></div></div>
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181520.png"><img src="images/Screenshot%202026-10-22%20181520.png" alt="Darshan photo 181520" loading="lazy"><div class="photo-label">Memory · 181520<small>A moment to keep</small></div></div>
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181538.png"><img src="images/Screenshot%202026-10-22%20181538.png" alt="Darshan photo 181538" loading="lazy"><div class="photo-label">Memory · 181538<small>A moment to keep</small></div></div>
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181623.png"><img src="images/Screenshot%202026-10-22%20181623.png" alt="Darshan photo 181623" loading="lazy"><div class="photo-label">Memory · 181623<small>A moment to keep</small></div></div>
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181644.png"><img src="images/Screenshot%202026-10-22%20181644.png" alt="Darshan photo 181644" loading="lazy"><div class="photo-label">Memory · 181644<small>A moment to keep</small></div></div>
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181721.png"><img src="images/Screenshot%202026-10-22%20181721.png" alt="Darshan photo 181721" loading="lazy"><div class="photo-label">Memory · 181721<small>A moment to keep</small></div></div>
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181739.png"><img src="images/Screenshot%202026-10-22%20181739.png" alt="Darshan photo 181739" loading="lazy"><div class="photo-label">Memory · 181739<small>A moment to keep</small></div></div>
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181753.png"><img src="images/Screenshot%202026-10-22%20181753.png" alt="Darshan photo 181753" loading="lazy"><div class="photo-label">Memory · 181753<small>A moment to keep</small></div></div>
+      <div class="photo" data-full="images/Screenshot%202026-10-22%20181815.png"><img src="images/Screenshot%202026-10-22%20181815.png" alt="Darshan photo 181815" loading="lazy"><div class="photo-label">Memory · 181815<small>A moment to keep</small></div></div>
+    </div>
+    <p class="note-line">One more year of you being you. That's a good thing. ♡</p>
+    <div class="footer">MADE WITH CARE · JUST FOR DARSHAN</div>
+    <button class="restart" id="restartBtn">Replay from the beginning</button>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="photoModal" role="dialog" aria-modal="true" aria-label="Photo preview">
+  <button class="modal-close" id="closeModal" aria-label="Close photo">×</button>
+  <img id="modalImg" src="" alt="Expanded memory">
+</div>
+
+<script>
+  // Twinkling stars in the background
+  const stars = document.getElementById('stars');
+  for (let i = 0; i < 95; i++) {
+    const star = document.createElement('span');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = (Math.random() * 4) + 's';
+    star.style.animationDuration = (2 + Math.random() * 4) + 's';
+    stars.appendChild(star);
+  }
+
+  const screens = ['welcome', 'countScreen', 'birthdayScreen'];
+  function showScreen(id) {
+    screens.forEach(screenId => document.getElementById(screenId).classList.toggle('active', screenId === id));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  const noBtn = document.getElementById('noBtn');
+  const buttonArea = document.getElementById('buttonArea');
+  function moveNoButton() {
+    const area = buttonArea.getBoundingClientRect();
+    const maxX = Math.max(0, area.width - noBtn.offsetWidth);
+    const maxY = 70;
+    noBtn.style.position = 'absolute';
+    noBtn.style.left = Math.random() * maxX + 'px';
+    noBtn.style.top = (Math.random() * maxY - 10) + 'px';
+  }
+  noBtn.addEventListener('pointerenter', moveNoButton);
+  noBtn.addEventListener('touchstart', function(e){ e.preventDefault(); moveNoButton(); }, {passive:false});
+  noBtn.addEventListener('click', moveNoButton);
+  document.getElementById('yesBtn').addEventListener('click', () => {
+    showScreen('countScreen');
+    updateCountdown();
+  });
+
+  // Birthday midnight is interpreted in India Standard Time (UTC+05:30).
+  const birthday = new Date('2026-11-24T00:00:00+05:30');
+  const pad = n => String(n).padStart(2, '0');
+  function updateCountdown() {
+    const now = new Date();
+    let diff = birthday - now;
+    if (diff <= 0) {
+      ['months','days','hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent = '00');
+      document.getElementById('openSurprise').classList.remove('hidden');
+      document.getElementById('waitHint').textContent = 'It’s your day. Your surprise is ready.';
+      showScreen('birthdayScreen');
+      return;
+    }
+    // Calendar-month countdown, followed by remaining days and time.
+    let cursor = new Date(now);
+    let months = 0;
+    while (true) {
+      const next = new Date(cursor);
+      next.setMonth(next.getMonth() + 1);
+      if (next > birthday) break;
+      if (next <= now) break;
+      cursor = next;
+      months++;
+      if (months > 24) break;
+    }
+    // Calculate months by calendar components without overshooting the target.
+    let y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
+    let totalMonths = (birthday.getFullYear()-y)*12 + (birthday.getMonth()-m);
+    const monthAnchor = new Date(now);
+    monthAnchor.setMonth(monthAnchor.getMonth()+totalMonths);
+    if (monthAnchor > birthday) totalMonths--;
+    const anchor = new Date(now);
+    anchor.setMonth(anchor.getMonth()+Math.max(0,totalMonths));
+    let remainder = birthday - anchor;
+    const days = Math.floor(remainder / 86400000); remainder %= 86400000;
+    const hours = Math.floor(remainder / 3600000); remainder %= 3600000;
+    const minutes = Math.floor(remainder / 60000); remainder %= 60000;
+    const seconds = Math.floor(remainder / 1000);
+    document.getElementById('months').textContent = pad(Math.max(0,totalMonths));
+    document.getElementById('days').textContent = pad(days);
+    document.getElementById('hours').textContent = pad(hours);
+    document.getElementById('minutes').textContent = pad(minutes);
+    document.getElementById('seconds').textContent = pad(seconds);
+    document.getElementById('openSurprise').classList.add('hidden');
+    document.getElementById('waitHint').textContent = 'The surprise unlocks when the countdown reaches zero.';
+  }
+  document.getElementById('openSurprise').addEventListener('click', () => {
+    if (new Date() >= birthday) showScreen('birthdayScreen');
+  });
+  updateCountdown();
+  setInterval(() => {
+    if (document.getElementById('countScreen').classList.contains('active')) updateCountdown();
+  }, 1000);
+
+  // Tap a memory to view it larger.
+  const modal = document.getElementById('photoModal');
+  document.querySelectorAll('.photo').forEach(photo => {
+    photo.addEventListener('click', () => {
+      const image = photo.querySelector('img');
+      if (!image || image.style.display === 'none') return;
+      document.getElementById('modalImg').src = photo.dataset.full;
+      modal.classList.add('open');
+    });
+  });
+  function closeModal(){ modal.classList.remove('open'); }
+  document.getElementById('closeModal').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+  document.getElementById('restartBtn').addEventListener('click', () => showScreen('welcome'));
+</script>
+</body>
+</html>
